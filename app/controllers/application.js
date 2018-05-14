@@ -10,9 +10,39 @@ export default Controller.extend({
           }).then(function(data) { alert('Login Successful ' + data.currentUser.email);}).catch(function(error) {alert(error);});
           this.set('emailAddressC', '');
           this.set('textC', '');
+
+          var balance = 0;
+          this.get('inc').toArray().forEach(function(item) {
+            balance = balance + item.get('income');
+        });
+
+          this.get('exp').toArray().forEach(function(item) {
+            balance = balance - item.get('expense');
+        });
+        //alert(balance);
+        this.set('balancev', '+' + balance);
     },
     signOut: function() {
                 this.get('session').close();//.then(function() {this.transitionTo('signin');}.bind(this));
               //  }
-    }}});
+                this.set('balancev', '');
+                this.set('incomev', '');
+                this.set('expensev', '');
+    },
+
+  //  getBalance(){
+  //    var balance = 0;
+  //    this.get('inc').toArray().forEach(function(item) {
+  //      balance = balance + item.get('income');
+  //  });
+
+  //    this.get('exp').toArray().forEach(function(item) {
+  //      balance = balance - item.get('expense');
+  //  });
+  //  //alert(balance);
+  //  this.set('balancev', '+' + balance);
+
+  //}
+}});
+
 //});

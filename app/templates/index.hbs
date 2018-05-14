@@ -5,19 +5,20 @@
       <div class="budget__title">
         Available Budget in <span class="budget__title--month">%Month%</span>:
       </div>
-      <div class="budget__value">+ 0.00</div>
+      <div class="budget__value" value="budgetvalue">{{balancev}}</div>
+      <button {{action 'getBalance'}} {{action 'getTotalInc'}} {{action 'getTotalExp'}}>Update Page</button>
       <div class="budget__income clearfix">
         <div class="budget__income--text">Income</div>
         <div class="right">
-          <div class="budget__income--value" value="display_income">+ 0.00</div>
+          <div class="budget__income--value" value="display_income">{{incomev}}</div>
           <div class="budget__income--percentage">&nbsp;</div>
         </div>
       </div>
       <div class="budget__expenses clearfix">
-        <div class="budget__expenses--text">Expenses</div>
+        <div class="budget__expenses--text">Expense</div>
         <div class="right clearfix">
-          <div class="budget__expenses--value">- 0.00</div>
-          <div class="budget__expenses--percentage">0%</div>
+          <div class="budget__expenses--value">{{expensev}}</div>
+          <div class="budget__expenses--percentage">&nbsp;</div>
         </div>
       </div>
     </div>

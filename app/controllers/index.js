@@ -29,7 +29,41 @@ export default Controller.extend({
       this.set('expense', '');
       this.set('expense_description', '');
       //this.set('display_income', this.get('income'));
-    }
-  }
+    },
+
+    getBalance(){
+      var balance = 0;
+      this.get('inc').toArray().forEach(function(item) {
+        balance = balance + item.get('income');
+    });
+
+      this.get('exp').toArray().forEach(function(item) {
+        balance = balance - item.get('expense');
+    });
+    //alert(balance);
+    this.set('balancev', '+' + balance);
+  },
+
+  getTotalInc(){
+    var totalinc = 0;
+    this.get('inc').toArray().forEach(function(item) {
+      totalinc = totalinc + item.get('income');
+  });
+
+  //alert(balance);
+  this.set('incomev', '+' + totalinc);
+},
+
+getTotalExp(){
+  var totalexp = 0;
+  this.get('exp').toArray().forEach(function(item) {
+    totalexp = totalexp + item.get('expense');
+});
+
+//alert(balance);
+this.set('expensev', '-' + totalexp);
+},
+
+}
 
 });
