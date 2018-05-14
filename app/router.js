@@ -9,7 +9,6 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('signup');
 
-  this.route('calculator');
   this.route('charts');
 });
 

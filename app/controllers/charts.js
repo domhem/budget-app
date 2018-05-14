@@ -112,6 +112,70 @@ export default Controller.extend({
 
       myExpense.redraw();
 
-  }}
+  },
+
+  showBalanceLine(){
+    //Line Chart
+    var myBalance = Highcharts.chart('balance-container', {
+      title: {
+        text: 'Your Balance History'
+      },
+      yAxis: {
+        title: {
+          text: '$ Amount'
+        }
+      },
+      xAxis: {
+        tickInterval: 1,
+        title: {
+          text: '# of Transactions/Deposits'
+        }
+      },
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+      },
+
+      plotOptions: {
+        series: {
+          label: {
+            connectorAllowed: false
+          },
+          pointStart: 0
+        }
+      },
+
+      series: [{
+        name: 'Balance',
+        color: '#09EB6D'
+      }],
+
+      responsive: {
+        rules: [{
+          condition: {
+            maxWidth: 500
+          },
+          chartOptions: {
+            legend: {
+              layout: 'horizontal',
+              align: 'center',
+              verticalAlign: 'bottom'
+            }
+          }
+        }]
+      }
+
+    });
+    this.get('bal').toArray().forEach(function(item) {
+      //alert(item.get('expense_description'));
+      myBalance.series[0].addPoint(
+        item.get('balance')
+      );
+    });
+  }
+
+
+}
 
 });

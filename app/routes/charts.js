@@ -13,12 +13,17 @@ export default Route.extend({
         exp: this.store.findAll('index').then(function(data){
           return data.filterBy('email',email).filterBy('expense');
 
-        })
+        }),
+        bal: this.store.findAll('index').then(function(data){
+          return data.filterBy('email',email).filterBy('balance');
+
+        }),
       });
     },
     setupController(controller, model) {
       this._super(...arguments);
       set(controller, 'inc', model.inc);
       set(controller, 'exp', model.exp);
+      set(controller, 'bal', model.bal);
     }
 });

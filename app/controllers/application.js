@@ -25,9 +25,7 @@ export default Controller.extend({
     signOut: function() {
                 this.get('session').close();//.then(function() {this.transitionTo('signin');}.bind(this));
               //  }
-                this.set('balancev', '');
-                this.set('incomev', '');
-                this.set('expensev', '');
+
     },
 
   //  getBalance(){
