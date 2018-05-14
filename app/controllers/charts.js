@@ -3,7 +3,7 @@ import Controller from '@ember/controller';
 export default Controller.extend({
 
   actions: {
-    showIncomeChart() {
+    showIncomeChart(){
       // Make teal colors
       var teal = (function() {
         var colors = [],
@@ -47,20 +47,71 @@ export default Controller.extend({
         }]
       });
 
-
-      //Functions to add to the charts
-      var addPie = function(type, des, val) {
-        //Add item to pie CHART
-        if (type == 'inc') {
+      this.get('inc').toArray().forEach(function(item) {
           myIncome.series[0].addPoint({
-            name: des,
-            y: val
-          });
-          myIncome.redraw();
-        }
-      }
+              name: item.get('income_description'),
+              y: item.get('income')
+            });
+      });
 
-    }
-  }
+      myIncome.redraw();
+
+    },
+
+    showExpenseChart(){
+
+      // Make red colors
+      var red = (function() {
+        var colors = [],
+          base = Highcharts.getOptions().colors[8],
+          i;
+
+        for (i = 0; i < 10; i += 1) {
+          // Start out with a darkened base color (negative brighten), and end
+          // up with a much brighter color
+          colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());
+        }
+        return colors;
+      }());
+
+      var myExpense = Highcharts.chart('pi-expense-container', {
+        chart: {
+          type: 'pie'
+        },
+        title: {
+          text: 'Your Spending'
+        },
+        credits: {
+          enabled: false
+        },
+        plotOptions: {
+          pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            colors: red,
+            dataLabels: {
+              enabled: true,
+              format: '<b>{point.name}</b><br>{point.percentage:.1f} %',
+              distance: -50
+            }
+          }
+        },
+        series: [{
+          name: '$',
+          colorByPoint: true,
+        }]
+      });
+
+      this.get('exp').toArray().forEach(function(item) {
+        //alert(item.get('expense_description'));
+          myExpense.series[0].addPoint({
+              name: item.get('expense_description'),
+              y: item.get('expense')
+            });
+      });
+
+      myExpense.redraw();
+
+  }}
 
 });

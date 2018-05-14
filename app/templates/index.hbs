@@ -26,13 +26,13 @@
   <div class="bottom">
     <div class="add">
       <div class="add__container">
-        <select class="add__type">
-                        <option value="income" selected>+</option>
-                        <option value="expense">-</option>
-                    </select>
-        {{input type="text" value=description class="add__description" placeholder="description" autofocus="autofocus"}}
+        {{input type="text" value=income_description class="add__description" placeholder="income description" autofocus="autofocus"}}
         {{input type="text" value=income class="add__value" placeholder="amount" autofocus="autofocus"}}
-        <button class="add__btn"><i class="ion-ios-checkmark-outline" {{action 'saveData'}}></i></button>
+        <button class="add__btn"><i class="ion-ios-checkmark-outline" {{action 'saveIncome'}}></i></button>
+        <br>
+        {{input type="text" value=expense_description class="add__description" placeholder="expense description" autofocus="autofocus"}}
+        {{input type="text" value=expense class="add__value" placeholder="amount" autofocus="autofocus"}}
+        <button class="add__btn"><i class="ion-ios-checkmark-outline" {{action 'saveExpense'}}></i></button>
       </div>
     </div>
 
@@ -42,11 +42,10 @@
         <div class="income__list">
         </div>
 
-        {{#each model as |index|}}
-          <div class="item clearfix"><div class="item__description">{{index.description}}</div>
-          <div class="right clearfix"><div class="item__value">{{index.income}}</div>
-          <div class="item__delete"><button class="item__delete--btn">
-          <i class="ion-ios-close-outline"></i></button></div></div></div>
+        {{#each inc as |inc|}}
+          <div class="item clearfix"><div class="item__description">{{inc.income_description}}</div>
+          <div class="right clearfix"><div class="item__value">{{inc.income}}</div>
+        </div></div>
 
         {{/each}}
 
@@ -55,6 +54,14 @@
       <div class="expenses">
         <h2 class="expenses__title">Expenses</h2>
         <div class="expenses__list">
+
+          {{#each exp as |exp|}}
+            <div class="item clearfix"><div class="item__description">{{exp.expense_description}}</div>
+            <div class="right clearfix"><div class="item__value">{{exp.expense}}</div>
+          </div></div>
+
+          {{/each}}
+
         </div>
       </div>
     </div>

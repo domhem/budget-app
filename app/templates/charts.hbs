@@ -1,3 +1,12 @@
+{{#each model as |index|}}
+  <div class="item clearfix"><div class="item__description">{{index.income_description}}</div>
+  <div class="right clearfix"><div class="item__value">{{index.income}}</div>
+  <div class="item__delete"><button class="item__delete--btn">
+  <i class="ion-ios-close-outline"></i></button></div></div></div>
+{{/each}}
+
+<button {{action 'showIncomeChart'}} {{action 'showExpenseChart'}}>Show Charts</button>
+
 <div class="container">
   <div id="pi-income-container" class="fixed"></div>
   <div id="pi-expense-container" class="flex-item"></div>
