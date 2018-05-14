@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BudgetApp</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600" rel="stylesheet" type="text/css">
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
+
+    {{content-for "head"}}
+
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/budget-app.css">
+
+    {{content-for "head-footer"}}
+  </head>
+  <body>
+    {{content-for "body"}}
+    
+    <div class="top">
+        <div class="budget">
+          <div class="budget__title">
+            Available Budget in <span class="budget__title--month">%Month%</span>:
+          </div>
+          <div class="budget__value">+ 2,345.64</div>
+          <div class="budget__income clearfix">
+            <div class="budget__income--text">Income</div>
+            <div class="right">
+              <div class="budget__income--value">+ 4,300.00</div>
+              <div class="budget__income--percentage">&nbsp;</div>
+            </div>
+          </div>
+          <div class="budget__expenses clearfix">
+            <div class="budget__expenses--text">Expenses</div>
+            <div class="right clearfix">
+              <div class="budget__expenses--value">- 1,954.36</div>
+              <div class="budget__expenses--percentage">45%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom">
+        <div class="add">
+          <div class="add__container">
+            <select class="add__type">
+                            <option value="inc" selected>+</option>
+                            <option value="exp">-</option>
+                        </select>
+            <input type="text" class="add__description" placeholder="Add description">
+            <input type="number" class="add__value" placeholder="Value">
+            <button class="add__btn"><i class="ion-ios-checkmark-outline"></i></button>
+          </div>
+        </div>
+        <div class="container clearfix">
+          <div class="income">
+            <h2 class="icome__title">Income</h2>
+            <div class="income__list">
+            </div>
+          </div>
+          <div class="expenses">
+            <h2 class="expenses__title">Expenses</h2>
+            <div class="expenses__list">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div id="pi-income-container" class="fixed"></div>
+        <div id="pi-expense-container" class="flex-item"></div>
+      </div>
+      <div id="balance-container"></div>
+
+
+    <script src="{{rootURL}}assets/vendor.js"></script>
+    <script src="{{rootURL}}assets/budget-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+    <!--<script>
+      // Initialize Firebase
+        var config = {
+        apiKey: "AIzaSyB9Am7nhEoud0OAUR6JckDqPSipsMCH1Ug",
+        authDomain: "budgetapp-378d4.firebaseapp.com",
+        databaseURL: "https://budgetapp-378d4.firebaseio.com",
+        projectId: "budgetapp-378d4",
+        storageBucket: "budgetapp-378d4.appspot.com",
+        messagingSenderId: "429304776368"
+        };
+        firebase.initializeApp(config);
+    </script> -->
+    {{content-for "body-footer"}}
+  </body>
+</html>
