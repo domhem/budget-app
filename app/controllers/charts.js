@@ -13,7 +13,7 @@ export default Controller.extend({
         for (i = 0; i < 10; i += 1) {
           // Start out with a darkened base color (negative brighten), and end
           // up with a much brighter color
-          colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());
+          colors.push(Highcharts.Color(base).brighten((i - 3) / 12).get());
         }
         return colors;
       }());
@@ -69,7 +69,7 @@ export default Controller.extend({
         for (i = 0; i < 10; i += 1) {
           // Start out with a darkened base color (negative brighten), and end
           // up with a much brighter color
-          colors.push(Highcharts.Color(base).brighten((i - 3) / 7).get());
+          colors.push(Highcharts.Color(base).brighten((i - 3) / 12).get());
         }
         return colors;
       }());
@@ -168,7 +168,7 @@ export default Controller.extend({
 
     });
     this.get('bal').toArray().forEach(function(item) {
-      //alert(item.get('expense_description'));
+      //alert(item.get('balance'));
       myBalance.series[0].addPoint(
         item.get('balance')
       );

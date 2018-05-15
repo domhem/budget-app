@@ -1,0 +1,14 @@
+{{#if  session.isAuthenticated}}
+<div class="jumbotron text-center col-xs-20 col-xs-offset-1 col-sm-offset-3 col-sm-5 col-md-15">
+  <h1>User Information</h1>
+  <br/><br/>
+
+  {{#each model as |signup|}}
+    <p>Name: {{signup.name}}</p>
+    <p>Email: {{signup.email}}</p>
+    <p>Address: {{signup.address}}</p>
+
+  {{/each}}
+
+</div>
+{{/if}}

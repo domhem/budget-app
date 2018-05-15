@@ -1,22 +1,21 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">BudgetApp</a>
+      {{#link-to 'application'}}<a class="navbar-brand" href="#">BudgetApp</a>{{/link-to}}
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="">Home</a></li>
+      {{#link-to 'application' tagName="li"}}<a href="">Home</a>{{/link-to}}
       <!-- implement home page (using link-to)-->
       {{#link-to 'signup' tagName="li"}}<a href="">Signup</a>{{/link-to}}
-      <!-- implement calculator page (using link-to)-->
-      {{#link-to 'index' tagName="li"}}<a href="">Calculator</a>{{/link-to}}
+      {{#link-to 'userinfo' tagName="li"}}<a href="">User Information</a>{{/link-to}}
       <!-- implement chart page (using link-to)-->
       {{#link-to 'charts' tagName="li"}}<a href="">Charts</a>{{/link-to}}
     </ul>
     <ul class="nav navbar-nav navbar-right">
       {{#if  session.isAuthenticated}}
         <div>
-          <li><a>Loging in as {{session.currentUser.email}}</a></li>
-          <li><a href="#" {{action 'signOut'}}><span class="glyphicon glyphicon-log-in"></span> Log Out</a></li>
+          <li><a>Currently logged in as {{session.currentUser.email}}</a></li>
+          <li><a href="#" {{action 'signOut'}}>{{#link-to 'application'}}<span class="glyphicon glyphicon-log-in"></span>{{/link-to}} Log Out</a></li>
         </div>
       {{else}}
           <li>
@@ -31,20 +30,22 @@
             <li><button class="btn" {{action 'signIn'}}><span class="glyphicon glyphicon-log-in" ></span> Login</button></li>
           </ul>
           </li>
+          {{/if}}
 
-      {{/if}}
     </ul>
   </div>
 </nav>
 
+{{#unless session.isAuthenticated}}
 <div class="top">
     <div class="budget">
       <div class="budget__title">
-        Welcome to our Website
+        Welcome to BudgetApp
       </div>
 
     </div>
 </div>
+{{/unless}}
 
 
 {{outlet}}
