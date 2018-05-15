@@ -29,11 +29,6 @@ function rerender(obj, parent, user, inc) {
 }
 
 function showBal(obj) {
-<<<<<<< HEAD
-  //console.log(obj);
-=======
-  console.log(obj);
->>>>>>> 21c27d0bac7da7427798acb155852e23e26c9b6d
   obj.actions.getBalance.bind(obj)();
 }
 
@@ -96,11 +91,6 @@ export default Controller.extend({
           this.set('balancev', parseFloat(this.get('mincome')) - parseFloat(this.get('mexpense')));
         });
       });
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 21c27d0bac7da7427798acb155852e23e26c9b6d
 
       // .then(function() {
       //   console.log('promise 3');
@@ -130,7 +120,6 @@ export default Controller.extend({
     // console.log(this.get('mbalance'));
   },
 
-<<<<<<< HEAD
   saveBalance() {
     var balance2 = 0;
       this.get('inc').toArray().forEach(function(item) {
@@ -158,29 +147,6 @@ export default Controller.extend({
       var data2 = data.filterBy('email',email).filterBy('income');
       data2.toArray().forEach(function(item) {
         this.set('mincome', this.get('mincome') + parseFloat(item.get('income')));
-        //console.log(this.get('mincome'));
-      }.bind(this));
-      this.set('incomev', '+' + this.get('mincome'));
-      fn();
-    }.bind(this));
-    // console.log("finally", this.get('mincome'));
-
-  //   var totalinc = 0;
-  //   this.get('inc').toArray().forEach(function(item) {
-  //     totalinc = totalinc + item.get('income');
-  // });
-
-
-},
-
-=======
-  getTotalInc(fn){
-    var email = this.get('session.currentUser.email');
-    this.set('mincome', 0);
-    this.store.findAll('index').then(function(data){
-      var data2 = data.filterBy('email',email).filterBy('income');
-      data2.toArray().forEach(function(item) {
-        this.set('mincome', this.get('mincome') + parseFloat(item.get('income')));
         console.log(this.get('mincome'));
       }.bind(this));
       this.set('incomev', '+' + this.get('mincome'));
@@ -196,7 +162,6 @@ export default Controller.extend({
 
 },
 
->>>>>>> 21c27d0bac7da7427798acb155852e23e26c9b6d
 getTotalExp(fn){
   var email = this.get('session.currentUser.email');
   this.set('mexpense', 0);
@@ -204,11 +169,6 @@ getTotalExp(fn){
     var data2 = data.filterBy('email',email).filterBy('expense');
     data2.toArray().forEach(function(item) {
       this.set('mexpense', this.get('mexpense') + parseFloat(item.get('expense')));
-<<<<<<< HEAD
-      //console.log(this.get('mexpense'));
-=======
-      console.log(this.get('mexpense'));
->>>>>>> 21c27d0bac7da7427798acb155852e23e26c9b6d
     }.bind(this));
     this.set('expensev', '-' + this.get('mexpense'));
     fn();
