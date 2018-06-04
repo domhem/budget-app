@@ -1,7 +1,9 @@
 # budget-app
 
 This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This website is a budget calculator. A user can sign up and input income and spending data. 
+The website will calculate the user's current budget and display graphs about the user's data. 
+  Example:The percentage of a user's spending on food. 
 
 ## Prerequisites
 
